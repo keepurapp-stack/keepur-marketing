@@ -8,10 +8,42 @@ const mulish = Mulish({
 });
 
 export const metadata: Metadata = {
-  title: "Keepur | Sales & Inventory Intelligence",
+  metadataBase: new URL("https://keepur.app"),
+
+  title: {
+    default: "Keepur | Business, kept simple",
+    template: "%s | Keepur",
+  },
+
   description:
-    "Keepur.app unifies sales, inventory, reports, and stock intelligence for modern retailers who value clarity.",
+    "Keepur helps shops track sales, manage inventory, and view reports in one calm, reliable system.",
+
+  openGraph: {
+    type: "website",
+    url: "https://keepur.app",
+    siteName: "Keepur",
+    title: "Keepur | Business, kept simple",
+    description:
+      "Track sales, manage inventory, and view reports in one calm, reliable system.",
+    images: [
+      {
+        url: "/images/keepur-og.png",
+        width: 1200,
+        height: 630,
+        alt: "Keepur – POS, Inventory & Reports",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Keepur | Business, kept simple",
+    description:
+      "Track sales, manage inventory, and view reports in one calm, reliable system.",
+    images: ["/images/keepur-og.png"],
+  },
 };
+
 
 export default function RootLayout({
   children,

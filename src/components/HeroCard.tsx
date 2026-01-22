@@ -16,7 +16,20 @@ const sectionFade = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
 };
 
+const scrollToPricing = () => {
+  if (typeof document === "undefined") return;
+
+  const el = document.getElementById("pricing");
+  if (!el) return;
+
+  const yOffset = -96; // header offset
+  const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+  window.scrollTo({ top: y, behavior: "smooth" });
+};
+
 export default function HeroCard() {
+
   return (
     <motion.section
       className="relative"
@@ -69,11 +82,13 @@ export default function HeroCard() {
             {/* CTAs */}
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
               <button
+                onClick={scrollToPricing}
                 className="rounded-full px-7 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
                 style={{ background: ACCENT }}
               >
                 Start now
               </button>
+
 
               <button
                 className="rounded-full border border-slate-300 bg-white/60 px-7 py-3 text-sm font-semibold text-slate-800 backdrop-blur transition hover:border-slate-400"
