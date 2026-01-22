@@ -32,7 +32,7 @@ export const metadata: Metadata = {
       "Track sales, manage inventory, and view reports in one calm, reliable system built for real retailers in Bangladesh.",
     images: [
       {
-        url: "/images/keepur-og.jpg",
+        url: "/images/keepur-og.png",
         width: 1200,
         height: 630,
         alt: "Keepur – Sales, Inventory & Reports for Retailers",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "Keepur | Sales, Inventory & Reports — Business, kept simple",
     description:
       "Track sales, manage inventory, and view reports in one calm, reliable system built for real retailers in Bangladesh.",
-    images: ["/images/keepur-og.jpg"],
+    images: ["/images/keepur-og.png"],
   },
 };
 
