@@ -108,10 +108,10 @@ export default function FeaturesSection() {
 
       <div className="mx-auto max-w-6xl px-4 py-6 lg:py-14 sm:px-6">
         <div className="mb-10 space-y-3">
-          <p className="text-xs uppercase tracking-widest" style={{ color: ACCENT }}>
+          <p className="text-xs uppercase text-primary" >
             Built for clarity
           </p>
-          <h2 className="text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl">
+          <h2 className="text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
             Everything you need to run your shop, without complexity.
           </h2>
           <p className="max-w-2xl text-sm leading-6 text-slate-600">
@@ -140,7 +140,7 @@ export default function FeaturesSection() {
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="space-y-1">
-                        <p className="text-sm font-semibold text-slate-900">{f.title}</p>
+                        <p className="text-sm font-semibold text-foreground">{f.title}</p>
                         {isActive && (
                           <p className="text-sm leading-6 text-slate-600">{f.description}</p>
                         )}
@@ -198,7 +198,7 @@ export default function FeaturesSection() {
                   const y = el.getBoundingClientRect().top + window.pageYOffset - 88;
                   window.scrollTo({ top: y, behavior: "smooth" });
                 }}
-                className="inline-flex w-full items-center justify-center rounded-full bg-white/90 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-white/100"
+                className="inline-flex w-full items-center justify-center rounded-full bg-white/90 px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-white/100"
               >
                 See pricing
               </button>

@@ -57,12 +57,11 @@ export default function SignalTimeline() {
         <div className="grid gap-10 lg:grid-cols-[1.1fr,1.4fr] lg:items-start">
           {/* Left: sticky-style intro */}
           <div className="space-y-5">
-            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-[0.7rem] uppercase tracking-widest text-slate-600 backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full" style={{ background: ACCENT }} />
+            <p className="text-xs uppercase tracking-widest text-primary">
               How keepur works
-            </div>
+            </p>
 
-            <h2 className="text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl">
+            <h2 className="text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
               From clarity to action,
               <br className="hidden sm:block" /> without the stress.
             </h2>
@@ -124,12 +123,9 @@ export default function SignalTimeline() {
                       <p className="text-xs uppercase tracking-widest text-slate-500">
                         Step {i + 1}
                       </p>
-                      <h3 className="text-lg font-semibold text-slate-900">{step.title}</h3>
+                      <h3 className="text-lg font-semibold text-foreground">{step.title}</h3>
                     </div>
 
-                    <span className="ml-auto hidden rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[0.65rem] uppercase tracking-widest text-slate-600 sm:inline-flex">
-                      keepur
-                    </span>
                   </div>
 
                   <p className="text-sm leading-6 text-slate-600">{step.copy}</p>

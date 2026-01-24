@@ -112,7 +112,7 @@ export default function Home() {
     <>
       <JsonLd />
 
-      <div className="min-h-screen bg-[#f4f6fb] text-slate-900">
+      <div className="min-h-screen bg-[#f4f6fb] text-foreground">
         <div className="relative isolate overflow-hidden">
           <div className="pointer-events-none absolute inset-0 opacity-60">
             <div className="absolute -top-16 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-[#dbe4ff] blur-3xl" />

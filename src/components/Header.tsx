@@ -44,17 +44,17 @@ export default function Header() {
     close = false
   ) => {
     event.preventDefault();
-      if (href.startsWith("#")) {
-        if (pathname === "/") {
-          scrollToId(normalizeIdFromHref(href));
-        } else {
-          router.push(`/${href}`);
-        }
-      } else if (href.startsWith("/")) {
-        router.push(href);
+    if (href.startsWith("#")) {
+      if (pathname === "/") {
+        scrollToId(normalizeIdFromHref(href));
       } else {
-        window.location.assign(href);
+        router.push(`/${href}`);
       }
+    } else if (href.startsWith("/")) {
+      router.push(href);
+    } else {
+      window.location.assign(href);
+    }
     if (close) closeMenu();
   };
 
@@ -118,7 +118,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavLinkClick(e, link.href)}
-                  className="rounded-full px-2 py-1 transition hover:text-slate-900"
+                  className="rounded-full px-2 py-1 transition hover:text-foreground"
                 >
                   {link.label}
                 </a>
@@ -236,8 +236,8 @@ export default function Header() {
                       href="https://app.keepur.app/signup"
                       rel="noreferrer"
                       target="_blank"
-                      className="w-full rounded-full px-5 py-3 text-center text-sm font-semibold text-white transition hover:opacity-95"
-                      style={{ background: ACCENT }}
+                      className="w-full rounded-full  px-5 py-3 text-center text-sm font-semibold text-white transition hover:opacity-95"
+                  
                       onClick={closeMenu}
                     >
                       Sign up

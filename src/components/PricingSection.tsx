@@ -244,8 +244,8 @@ export default function PricingSection() {
       variants={sectionFade}
     >
       <div className="max-w-2xl space-y-3">
-        <p className="text-xs uppercase tracking-widest text-slate-500">Pricing</p>
-        <h2 className="text-3xl font-semibold leading-tight text-slate-900">
+        <p className="text-xs uppercase tracking-widest text-primary">Pricing</p>
+        <h2 className="text-3xl font-semibold leading-tight text-foreground">
           Simple plans for everyday shops.
         </h2>
         <p className="text-sm text-slate-600">
@@ -291,14 +291,14 @@ export default function PricingSection() {
                 <p className="text-xs uppercase tracking-widest text-slate-500">
                   {plan.planKey}
                 </p>
-                <h3 className="text-xl font-semibold text-slate-900">{plan.label}</h3>
+                <h3 className="text-xl font-semibold text-foreground">{plan.label}</h3>
                 <p className="min-h-[56px] text-sm leading-6 text-slate-600">
                   {plan.description}
                 </p>
               </div>
 
               <div className="mt-5 flex items-end gap-2">
-                <span className="text-3xl font-semibold tracking-tight text-slate-900">
+                <span className="text-3xl font-semibold tracking-tight text-foreground">
                   {plan.priceLabel}
                 </span>
                 {plan.cadenceLabel ? (
@@ -337,7 +337,7 @@ export default function PricingSection() {
                     "inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition",
                     isFeatured
                       ? "text-white hover:opacity-95"
-                      : "border border-slate-300 bg-white text-slate-900 hover:border-slate-400",
+                      : "border border-slate-300 bg-white text-foreground hover:border-slate-400",
                   ].join(" ")}
                   style={isFeatured ? { background: ACCENT } : undefined}
                 >

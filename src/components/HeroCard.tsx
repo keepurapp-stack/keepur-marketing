@@ -69,7 +69,7 @@ export default function HeroCard() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
               Business, kept simple.
             </h1>
 
@@ -120,7 +120,7 @@ export default function HeroCard() {
                   <p className="text-[0.85rem] text-slate-500">
                     {stat.label}
                   </p>
-                  <p className="mt-1 text-lg font-semibold text-slate-900">{stat.value}</p>
+                  <p className="mt-1 text-lg font-semibold text-foreground">{stat.value}</p>
                 </div>
               ))}
             </div>
@@ -163,7 +163,7 @@ export default function HeroCard() {
                     Everyday retail, clearly tracked
                   </p>
 
-                  <p className="mt-1 text-sm font-semibold text-slate-900">
+                  <p className="mt-1 text-sm font-semibold text-foreground">
                     Sales and stock activity across Bangladesh, in real time
                   </p>
 

@@ -143,8 +143,8 @@ export default function ContactFormPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f6fb] text-slate-900">
-        <div className="relative isolate overflow-hidden">
+    <div className="min-h-screen bg-[#f4f6fb] text-foreground">
+      <div className="relative isolate overflow-hidden">
 
         <div className="pointer-events-none absolute inset-0 opacity-70">
           <div className="absolute -top-20 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-[#dbe4ff] blur-3xl" />
@@ -155,7 +155,7 @@ export default function ContactFormPage() {
         <main className="relative mx-auto flex max-w-5xl flex-col gap-6 px-6 pb-16 pt-32 sm:px-10">
           <section className="space-y-3 rounded-3xl border border-slate-200/70 bg-white/80 px-8 py-10 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
             <p className="text-xs  text-slate-500">Talk to sales</p>
-            <h1 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Get started today</h1>
+            <h1 className="text-3xl font-semibold text-foreground sm:text-4xl">Get started today</h1>
             <p className="text-sm leading-6 text-slate-600">
               Share a few details about your store so we can recommend the right plan. A Keepur specialist will reach out within one business day.
             </p>
@@ -170,7 +170,7 @@ export default function ContactFormPage() {
               Platform response metadata is available for debugging.
             </div>
 
-            
+
 
             <form className="space-y-6 text-sm text-slate-700" onSubmit={handleSubmit}>
               <div>

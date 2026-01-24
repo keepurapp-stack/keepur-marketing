@@ -31,11 +31,11 @@ export default function ReadySection() {
       </div>
 
       <div className="mx-auto max-w-2xl">
-        <p className="text-xs uppercase tracking-widest text-slate-500">
+        <p className="text-xs uppercase tracking-widest text-primary">
           Ready when you are
         </p>
 
-        <h2 className="mt-3 text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl">
+        <h2 className="mt-3 text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
           Start using keepur, without the stress.
         </h2>
 

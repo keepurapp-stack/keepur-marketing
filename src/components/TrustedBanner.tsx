@@ -10,8 +10,7 @@ const trustedLogos = [
   { src: "https://res.cloudinary.com/dk6f1hazg/image/upload/v1769220350/attachment_119771326_tauxhm.png" },
   { src: "https://res.cloudinary.com/dk6f1hazg/image/upload/v1769220473/images_5_q54yn3.jpg" },
   { src: "https://res.cloudinary.com/dk6f1hazg/image/upload/v1769220521/Svg-Logo_x7uvbc.png" },
-  // { src: "https://dummyimage.com/140x60/e5e7eb/64748b&text=FOLIA" },
-  // { src: "https://dummyimage.com/140x60/e5e7eb/64748b&text=HARBOR" },
+
 ];
 
 export default function TrustedBanner() {
@@ -34,7 +33,7 @@ export default function TrustedBanner() {
 
   return (
     <section className="rounded-[32px] p-5  sm:p-6">
-      <div className="mb-3 text-xs uppercase text-center tracking-widest text-slate-500">
+      <div className="mb-3 text-xs uppercase text-center tracking-widest text-primary">
         Trusted by retailers
       </div>
 

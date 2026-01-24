@@ -52,7 +52,7 @@ export default function FaqSection() {
           <p className="text-xs uppercase tracking-widest text-slate-500">
             Common questions
           </p>
-          <h2 className="text-3xl font-semibold leading-tight text-slate-900">
+          <h2 className="text-3xl font-semibold leading-tight text-foreground">
             Everything you need to know.
           </h2>
           <p className="max-w-prose text-sm text-slate-600">
@@ -77,7 +77,7 @@ export default function FaqSection() {
                   }
                   className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
                 >
-                  <span className="text-sm font-semibold text-slate-900">
+                  <span className="text-sm font-semibold text-foreground">
                     {faq.q}
                   </span>
                   <span className="text-slate-400">

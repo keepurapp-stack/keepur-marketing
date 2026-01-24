@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const ACCENT = "#1E2A5A";
+const PRIMARY = "#6E8CFB";
 
 type Testimonial = {
   name: string;
@@ -86,19 +87,19 @@ function initials(name: string) {
  */
 function Avatar({ name, avatar }: { name: string; avatar?: string }) {
   return (
-    <div className="relative h-11 w-11">
+    <div className=" h-11 w-11">
       {/* Gradient base */}
       <div
         className=" rounded-full h-11 w-11"
         style={{
           background:
             "radial-gradient(60% 60% at 30% 20%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 55%)," +
-            `linear-gradient(135deg, ${ACCENT}33, rgba(148,163,184,0.35))`,
+            `linear-gradient(135deg, ${PRIMARY}33, rgba(110,140,251,0.3))`,
         }}
       />
 
       {/* Inner circle */}
-      <div className="absolute inset-[2px] h-11 w-11  overflow-hidden rounded-full border border-white/70 bg-white/70">
+      <div className="absolute z-50 inset-[2px] h-11 w-11  overflow-hidden rounded-full border border-white/70 bg-white/70">
         {avatar ? (
           <Image
             src={avatar}
@@ -221,10 +222,10 @@ export default function TestimonialsCarousel() {
       <div className="mx-auto max-w-6xl space-y-10">
         {/* Header */}
         <div className="max-w-xl space-y-3">
-          <p className="text-xs uppercase tracking-widest text-slate-500">
+          <p className="text-xs uppercase tracking-widest text-primary">
             Trusted by shop owners
           </p>
-          <h2 className="text-3xl font-semibold leading-tight text-slate-900">
+          <h2 className="text-3xl font-semibold leading-tight text-foreground">
             Businesses that run with confidence.
           </h2>
           <p className="text-sm text-slate-600">
@@ -237,7 +238,7 @@ export default function TestimonialsCarousel() {
           <div className="overflow-hidden">
             {canRender && (
               <motion.div
-                className="flex"
+                className="flex py-2"
                 style={{ gap: `${GAP}px` }}
                 animate={{ x }}
                 transition={{
@@ -258,7 +259,7 @@ export default function TestimonialsCarousel() {
                         <Avatar name={t.name} avatar={t.avatar} />
 
                         <div className="min-w-0">
-                          <p className="text-sm font-semibold text-slate-900">
+                          <p className="text-sm font-semibold text-foreground">
                             {t.name}
                           </p>
                           <p className="text-xs text-slate-500">
