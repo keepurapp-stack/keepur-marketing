@@ -173,7 +173,7 @@ export default function FeaturesSection() {
                 />
               </motion.div>
             </AnimatePresence>
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/60 via-black/60 to-primary/10" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-foreground/80 via-foreground/60 to-foreground/10" />
 
             <div className="relative z-10 flex min-h-[360px] flex-col justify-end space-y-4 p-6 text-white">
               <div className="space-y-2">
