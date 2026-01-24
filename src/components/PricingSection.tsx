@@ -330,11 +330,9 @@ export default function PricingSection() {
                 <a
                   href={
                     plan.isCustom
-                      ? "https://app.keepur.app/contact"
+                      ? "/contact"
                       : `https://app.keepur.app/signup?plan=${plan.planKey}`
                   }
-                  target="_blank"
-                  rel="noreferrer"
                   className={[
                     "inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition",
                     isFeatured
@@ -346,11 +344,7 @@ export default function PricingSection() {
                   {plan.buttonLabel}
                 </a>
 
-                {!plan.isCustom && (
-                  <p className="mt-2 text-center text-xs text-slate-500">
-                    No hidden fees.
-                  </p>
-                )}
+
               </div>
             </article>
           );

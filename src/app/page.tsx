@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 
 import PricingSection from "@/components/PricingSection";
-import Header from "@/components/Header";
 import HeroCard from "@/components/HeroCard";
 import FeaturesSection from "@/components/FeaturesSection";
 import SignalTimeline from "@/components/SignalTimeline";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FaqSection from "@/components/FaqSection";
-import Footer from "@/components/Footer";
 import ReadySection from "@/components/ReadySection";
+import TrustedBanner from "@/components/TrustedBanner";
 
 const siteUrl = "https://keepur.app";
 
@@ -115,8 +114,6 @@ export default function Home() {
 
       <div className="min-h-screen bg-[#f4f6fb] text-slate-900">
         <div className="relative isolate overflow-hidden">
-          <Header />
-
           <div className="pointer-events-none absolute inset-0 opacity-60">
             <div className="absolute -top-16 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-[#dbe4ff] blur-3xl" />
             <div className="absolute top-20 -right-10 h-80 w-80 rounded-full bg-[#c8f6ff] blur-3xl" />
@@ -125,6 +122,7 @@ export default function Home() {
 
           <main className="relative mx-auto flex max-w-6xl flex-col gap-16 px-6 pb-10 pt-32 sm:px-10">
             <HeroCard />
+            <TrustedBanner />
             <FeaturesSection />
             <SignalTimeline />
             <TestimonialsSection />
@@ -133,8 +131,6 @@ export default function Home() {
             <ReadySection />
           </main>
         </div>
-
-        <Footer />
       </div>
     </>
   );

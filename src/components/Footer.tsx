@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
+import { useRouter } from "next/navigation";
 
 const ACCENT = "#1E2A5A";
 
@@ -55,10 +56,14 @@ function normalizeIdFromHref(href: string) {
 }
 
 export default function Footer() {
+  const router = useRouter();
   const onNav = useCallback((href: string) => {
     const id = normalizeIdFromHref(href);
     scrollToId(id);
   }, []);
+  const requestDemo = useCallback(() => {
+    router.push("/contact");
+  }, [router]);
 
   return (
     <footer className="relative overflow-hidden bg-slate-950 text-slate-200">
@@ -92,7 +97,7 @@ export default function Footer() {
             <div className="flex flex-wrap gap-3 pt-1">
               <button
                 type="button"
-                onClick={() => onNav("#ready")}
+                onClick={requestDemo}
                 className="rounded-full px-5 py-2 text-xs font-semibold text-white transition hover:opacity-95"
                 style={{ background: ACCENT }}
               >

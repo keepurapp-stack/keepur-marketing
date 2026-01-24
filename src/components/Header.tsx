@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import type { MouseEvent } from "react";
 
@@ -13,6 +14,7 @@ const navLinks = [
   { label: "How it works", href: "#signal" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
+  { label: "Contact", href: "/contact" },
 ];
 
 function scrollToId(id: string) {
@@ -31,6 +33,8 @@ function normalizeIdFromHref(href: string) {
 export default function Header() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -40,7 +44,17 @@ export default function Header() {
     close = false
   ) => {
     event.preventDefault();
-    scrollToId(normalizeIdFromHref(href));
+      if (href.startsWith("#")) {
+        if (pathname === "/") {
+          scrollToId(normalizeIdFromHref(href));
+        } else {
+          router.push(`/${href}`);
+        }
+      } else if (href.startsWith("/")) {
+        router.push(href);
+      } else {
+        window.location.assign(href);
+      }
     if (close) closeMenu();
   };
 

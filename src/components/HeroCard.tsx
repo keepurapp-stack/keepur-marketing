@@ -6,9 +6,9 @@ import Image from "next/image";
 const ACCENT = "#1E2A5A"; // premium deep indigo
 
 const heroStats = [
-  { label: "Active retailers", value: "1,240" },
-  { label: "Inventory value tracked", value: "৳4.8B" },
-  { label: "Sales synced daily", value: "92K+" },
+  { label: "Active retailers", value: "1,240+" },
+  { label: "Inventory value tracked", value: "৳4.8M" },
+  { label: "Sales synced daily", value: "12K+" },
 ];
 
 const sectionFade = {
@@ -47,7 +47,7 @@ export default function HeroCard() {
         <div className="absolute bottom-[-160px] left-1/3 h-96 w-96 rounded-full bg-slate-100 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 ">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           {/* Left */}
           <div className="space-y-6 text-center lg:text-left">
@@ -90,11 +90,24 @@ export default function HeroCard() {
               </button>
 
 
-              <button
-                className="rounded-full border border-slate-300 bg-white/60 px-7 py-3 text-sm font-semibold text-slate-800 backdrop-blur transition hover:border-slate-400"
+              <a
+                href="https://wa.me/8801778726988"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white transition duration-200"
+                style={{ background: "#25D366" }}
               >
-                Book a call
-              </button>
+                <span>Connect on WhatsApp</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-4 w-4 transition duration-200 group-hover:translate-x-1"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12a1 1 0 0 1 1-1h9.586l-2.293-2.293a1 1 0 1 1 1.414-1.414l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414-1.414L15.586 13H6a1 1 0 0 1-1-1z" />
+                </svg>
+              </a>
             </div>
 
             {/* Trust row */}
@@ -102,9 +115,9 @@ export default function HeroCard() {
               {heroStats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-2xl border border-slate-200 bg-white/70 p-4 text-left backdrop-blur"
+                  className="rounded-2xl border border-slate-200 flex flex-col justify-between bg-white/70 p-4 text-left backdrop-blur"
                 >
-                  <p className="text-[0.65rem] uppercase tracking-widest text-slate-500">
+                  <p className="text-[0.85rem] text-slate-500">
                     {stat.label}
                   </p>
                   <p className="mt-1 text-lg font-semibold text-slate-900">{stat.value}</p>

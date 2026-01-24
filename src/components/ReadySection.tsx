@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const ACCENT = "#1E2A5A"; // keepur premium indigo
@@ -57,16 +58,32 @@ export default function ReadySection() {
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <button
+          <Link
+            href="/contact"
             className="w-full rounded-full px-7 py-3 text-sm font-semibold text-white transition hover:opacity-95 sm:w-auto"
             style={{ background: ACCENT }}
           >
             Request a demo
-          </button>
+          </Link>
 
-          <button className="w-full rounded-full border border-slate-300 bg-white/60 px-7 py-3 text-sm font-semibold text-slate-800 backdrop-blur transition hover:border-slate-400 sm:w-auto">
-            Talk to us
-          </button>
+          <a
+            href="https://wa.me/8801778726988"
+            target="_blank"
+            rel="noreferrer"
+            className="group flex w-full items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white transition sm:w-auto"
+            style={{ background: "#25D366" }}
+          >
+            <span>Connect on WhatsApp</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="h-4 w-4 transition duration-200 group-hover:translate-x-1"
+              aria-hidden="true"
+            >
+              <path d="M5 12a1 1 0 0 1 1-1h9.586l-2.293-2.293a1 1 0 1 1 1.414-1.414l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414-1.414L15.586 13H6a1 1 0 0 1-1-1z" />
+            </svg>
+          </a>
         </div>
 
         <p className="mt-4 text-xs text-slate-500">
