@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Mulish } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const mulish = Mulish({
-  variable: "--font-mulish",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
 });
 
@@ -54,7 +54,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${mulish.variable} antialiased`}>
+      <body className={`${geist.variable} antialiased`}>
         <Header />
         {children}
         <Footer />

@@ -288,9 +288,7 @@ export default function PricingSection() {
               )}
 
               <div className="space-y-2">
-                <p className="text-xs uppercase tracking-widest text-slate-500">
-                  {plan.planKey}
-                </p>
+             
                 <h3 className="text-xl font-semibold text-foreground">{plan.label}</h3>
                 <p className="min-h-[56px] text-sm leading-6 text-slate-600">
                   {plan.description}

@@ -201,12 +201,7 @@ export default function Header() {
             >
               <div className="mx-auto max-w-6xl px-6 sm:px-10">
                 <div className="rounded-3xl border border-slate-200/70 bg-white/92 p-4 shadow-[0_20px_70px_rgba(15,23,42,0.12)] backdrop-blur-xl">
-                  {/* Top row: title + close */}
-                  <div className="flex items-center justify-between">
-                    <p className="text-xs uppercase tracking-widest text-slate-500">Menu</p>
 
-
-                  </div>
 
                   <div className="mt-3 grid gap-2">
                     {navLinks.map((link) => (
@@ -235,9 +230,10 @@ export default function Header() {
                     <Link
                       href="https://app.keepur.app/signup"
                       rel="noreferrer"
+                      style={{ background: ACCENT }}
                       target="_blank"
                       className="w-full rounded-full  px-5 py-3 text-center text-sm font-semibold text-white transition hover:opacity-95"
-                  
+
                       onClick={closeMenu}
                     >
                       Sign up
