@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 const loginUrl = "https://app.keepur.app/login";
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: true },
   title: "Log in to Keepur",
   description:
     "Log in to Keepur to access checkout, inventory management, and reports from any device.",

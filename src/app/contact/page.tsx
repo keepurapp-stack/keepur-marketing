@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
 import ContactFormPage from "@/components/ContactFormPage";
 
-export const metadata: Metadata = {
-  title: "Contact sales | Keepur",
-  description:
-    "Talk to a Keepur expert to learn how we help retailers track sales, manage inventory, and view reports. Submit your details and we will get back to you soon.",
-};
+export const metadata = pageMetadata("Contact Keepur Sales", "Discuss POS, shop management, inventory, and multi-store software for your Bangladesh retail business with Keepur.", "/contact");
 
 export default function ContactPage() {
   return <ContactFormPage />;

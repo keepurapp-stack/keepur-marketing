@@ -6,9 +6,9 @@ import Image from "next/image";
 const ACCENT = "#1E2A5A"; // premium deep indigo
 
 const heroStats = [
-  { label: "Active retailers", value: "1,240+" },
-  { label: "Inventory value tracked", value: "৳4.8M" },
-  { label: "Sales synced daily", value: "12K+" },
+  { label: "Retail checkout", value: "POS & billing" },
+  { label: "Product management", value: "Stock & inventory" },
+  { label: "Store visibility", value: "Sales reports" },
 ];
 
 const sectionFade = {
@@ -70,13 +70,13 @@ export default function HeroCard() {
 
             {/* Headline */}
             <h1 className="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
-              Business, kept simple.
+              POS software for shops in Bangladesh.
             </h1>
 
             {/* Subheading */}
             <p className="mx-auto max-w-xl text-sm leading-6 text-slate-600 sm:text-base lg:mx-0">
-              Track sales, manage inventory, and view reports in one calm, reliable system
-              built for real shops.
+              Keepur is web-based POS and shop management software for retail businesses.
+              Manage checkout, billing, inventory, staff, and multiple stores in one place.
             </p>
 
             {/* CTAs */}

@@ -11,41 +11,10 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://keepur.app"),
-
-  title: {
-    default: "Keepur | Sales, Inventory & Reports — Business, kept simple",
-    template: "%s | Keepur",
-  },
-
-  description:
-    "Keepur helps shops track sales, manage inventory, and view reports in one calm, reliable system built for real retailers in Bangladesh.",
-
-  openGraph: {
-    type: "website",
-    url: "https://keepur.app",
-    siteName: "Keepur",
-    title: "Keepur | Sales, Inventory & Reports — Business, kept simple",
-    description:
-      "Track sales, manage inventory, and view reports in one calm, reliable system built for real retailers in Bangladesh.",
-    images: [
-      {
-        url: "/images/keepur-og.png",
-        width: 1200,
-        height: 630,
-        alt: "Keepur – Sales, Inventory & Reports for Retailers",
-      },
-    ],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Keepur | Sales, Inventory & Reports — Business, kept simple",
-    description:
-      "Track sales, manage inventory, and view reports in one calm, reliable system built for real retailers in Bangladesh.",
-    images: ["/images/keepur-og.png"],
-  },
+  title: { default: "POS & Shop Management Software in Bangladesh | Keepur", template: "%s | Keepur" },
+  description: "Web-based POS, billing, inventory and shop management software for retailers in Bangladesh.",
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
 };
-
 
 export default function RootLayout({
   children,

@@ -1,115 +1,22 @@
-"use client";
-
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
 const faqs = [
-  {
-    q: "How quickly can a shop start using keepur?",
-    a: "Most shops get started within a  hours. We help with basic setup, product list import, and staff onboarding so you can start using keepur without slowing down daily business.",
-  },
-  {
-    q: "Do I need to replace my existing POS?",
-    a: "No. keepur is designed to work with what you already use. It connects sales, inventory, and reports into one place, without forcing you to change your current setup.",
-  },
-  {
-    q: "Is keepur suitable for small shops, or only big retailers?",
-    a: "keepur works for a single shop just as well as for growing businesses. You can start small and scale to multiple outlets when your business grows.",
-  },
-  {
-    q: "What happens if internet is slow or unstable?",
-    a: "keepur is built for real conditions. Daily operations continue smoothly, and data syncs automatically once the connection is stable again.",
-  },
-  {
-    q: "Is my business data safe?",
-    a: "Yes. Your data belongs to you. keepur uses secure infrastructure and access controls so only authorized people from your team can see sensitive information.",
-  },
-  {
-    q: "How does keepur use AI?",
-    a: "Our goal is to build a self-driven business manager. Over time, keepur will learn from your sales, stock movement, and customer patterns to suggest what needs attention — without you having to search through reports.",
-  },
-  {
-    q: "Will keepur replace managers or staff?",
-    a: "No. keepur is built to support people, not replace them. It reduces manual work and confusion so teams can focus on customers and better decisions.",
-  },
-  {
-    q: "Can we integrate keepur with other tools later?",
-    a: "Yes. keepur is built with future integrations in mind, so it can connect with accounting tools, CRM systems, and other services as your business evolves.",
-  },
+  { q: "What is Keepur?", a: "Keepur is web-based POS and shop management software for retail businesses in Bangladesh. It brings retail checkout, billing, inventory, staff access, stores, and sales reports together." },
+  { q: "Can I use Keepur for a small retail shop?", a: "Yes. Keepur supports individual retail shops and businesses with multiple stores. Choose a plan based on your product catalog, staff, devices, and store requirements." },
+  { q: "Does Keepur include inventory management?", a: "Keepur manages product catalogs and stock alongside retail sales. Available inventory alerts, stock movement history, and product limits depend on the selected plan." },
+  { q: "Can I manage multiple stores with Keepur?", a: "Yes. Keepur supports store-level sales and inventory under one business. Check the store allowance displayed for each plan before subscribing." },
+  { q: "How much does Keepur POS software cost?", a: "Current subscription prices are listed in BDT in the pricing section. Each plan shows its billing interval, available trial, limits, and included features. Contact sales for custom requirements." },
+  { q: "Can staff and owners have different access?", a: "Keepur supports staff permissions and owner access to business information. The number of team members and devices depends on the selected subscription plan." },
+  { q: "How do I get started?", a: "Review the pricing section and select a plan to create an account, or use the contact form to discuss your shop, product catalog, and store requirements with the Keepur team." },
 ];
-
 export default function FaqSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  return (
-    <section
-      id="faq"
-      className="relative rounded-[44px] border border-slate-200 bg-white px-6 py-12 sm:px-10"
-    >
-      <div className="mx-auto max-w-4xl space-y-10">
-        {/* Header */}
-        <div className="space-y-3">
-          <p className="text-xs uppercase tracking-widest text-slate-500">
-            Common questions
-          </p>
-          <h2 className="text-3xl font-semibold leading-tight text-foreground">
-            Everything you need to know.
-          </h2>
-          <p className="max-w-prose text-sm text-slate-600">
-            Clear answers to help you understand how keepur fits into your daily
-            business and long-term growth.
-          </p>
-        </div>
-
-        {/* FAQ list */}
-        <div className="space-y-3">
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <div
-                key={faq.q}
-                className="rounded-2xl border border-slate-200 bg-white"
-              >
-                <button
-                  type="button"
-                  onClick={() =>
-                    setOpenIndex(isOpen ? null : index)
-                  }
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
-                >
-                  <span className="text-sm font-semibold text-foreground">
-                    {faq.q}
-                  </span>
-                  <span className="text-slate-400">
-                    {isOpen ? "−" : "+"}
-                  </span>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
-                      className="overflow-hidden"
-                    >
-                      <p className="px-5 pb-5 text-sm leading-6 text-slate-600">
-                        {faq.a}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Closing reassurance */}
-        <p className="text-xs text-slate-500">
-          Still have questions? We’re happy to talk and understand your business.
-        </p>
-      </div>
-    </section>
-  );
+  const schema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(faq => ({
+    "@type": "Question", name: faq.q, acceptedAnswer: { "@type": "Answer", text: faq.a },
+  })) };
+  return <section id="faq" aria-labelledby="faq-heading" className="space-y-5">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
+    <h2 id="faq-heading" className="text-3xl font-semibold">Questions about Keepur POS and shop management</h2>
+    <div className="space-y-3">{faqs.map(faq => <details key={faq.q} className="rounded-2xl border border-slate-200 bg-white p-5">
+      <summary className="cursor-pointer text-sm font-semibold">{faq.q}</summary>
+      <p className="mt-3 text-sm leading-7 text-slate-600">{faq.a}</p>
+    </details>)}</div>
+  </section>;
 }

@@ -19,6 +19,7 @@ type BillingProfile = {
 
 type Entitlements = {
   maxTeamMembers: number | null;
+  maxStores?: number | null;
   maxSkus: number | null;
   maxDevices: number | null;
   maxMonthlySales: number | null;
@@ -54,105 +55,29 @@ type DisplayPlan = {
   trialLabel?: string;
 };
 
-const defaultPlans: DisplayPlan[] = [
-  {
-    id: "starter",
-    planKey: "starter",
-    label: "Starter",
-    description: "New shops and solo owners getting started with digital tracking.",
-    priceLabel: "৳499",
-    cadenceLabel: "/mo",
-    priceValue: 499,
-    entitlementHighlights: [
-      "1 team member",
-      "200 SKUs",
-      "1 device",
-      "Up to 300 monthly orders",
-      "Basic reporting",
-    ],
-    trialLabel: "14-day trial",
-    buttonLabel: "Start with Starter",
-  },
-  {
-    id: "business",
-    planKey: "business",
-    label: "Business",
-    description: "Growing shops that need staff access, reports, and control.",
-    priceLabel: "৳1,499",
-    cadenceLabel: "/mo",
-    priceValue: 1499,
-    entitlementHighlights: [
-      "3 team members",
-      "1,500 SKUs",
-      "Advanced reporting",
-      "Inventory alerts",
-    ],
-    trialLabel: "30-day trial",
-    featured: true,
-    buttonLabel: "Choose Business",
-  },
-  {
-    id: "pro",
-    planKey: "pro",
-    label: "Pro",
-    description: "High-volume retail, wholesalers, and expanding brands.",
-    priceLabel: "৳2,999",
-    cadenceLabel: "/mo",
-    priceValue: 2999,
-    entitlementHighlights: [
-      "10 team members",
-      "5,000 SKUs",
-      "Stock movements",
-      "Priority support",
-    ],
-    trialLabel: "Personalized onboarding",
-    buttonLabel: "Choose Pro",
-  },
-  {
-    id: "custom",
-    planKey: "custom",
-    label: "Custom",
-    description: "Custom limits, onboarding, and support for large operations.",
-    priceLabel: "Let’s talk",
-    cadenceLabel: "",
-    priceValue: null,
-    entitlementHighlights: ["Unlimited SKUs", "Custom workflows", "SLA-backed support"],
-    buttonLabel: "Talk to us",
-    isCustom: true,
-  },
-];
-
-const formatSkuLabel = (value: number | null) =>
-  value ? `${value.toLocaleString("en-US")} SKUs` : "Unlimited SKUs";
-
-const formatTeamMembers = (value: number | null) =>
-  value ? `${value} team member${value > 1 ? "s" : ""}` : "Unlimited team members";
-
-const formatMonthlyOrders = (value: number | null) =>
-  value ? `Up to ${value.toLocaleString("en-US")} monthly orders` : "Unlimited monthly orders";
-
-const capitalizeReportsLevel = (value: string | null) =>
-  value ? `${value.charAt(0).toUpperCase()}${value.slice(1)} reporting` : null;
+const formatLimit = (value: number | null | undefined, singular: string, plural: string) => {
+  if (value === null) return `Unlimited ${plural}`;
+  if (typeof value !== "number" || !Number.isFinite(value) || value < 0) return null;
+  return `${value.toLocaleString("en-US")} ${value === 1 ? singular : plural}`;
+};
 
 const buildEntitlementHighlights = (entitlements: Entitlements): string[] => {
-  const highlights = [
-    formatTeamMembers(entitlements.maxTeamMembers),
-    formatSkuLabel(entitlements.maxSkus),
-    formatMonthlyOrders(entitlements.maxMonthlySales),
-  ];
-
-  const optionalHighlights = [
-    capitalizeReportsLevel(entitlements.reportsLevel),
-    entitlements.maxDevices
-      ? `${entitlements.maxDevices} device${entitlements.maxDevices > 1 ? "s" : ""}`
-      : null,
+  const monthlySales = entitlements.maxMonthlySales;
+  const reports = entitlements.reportsLevel;
+  return [
+    formatLimit(entitlements.maxStores, "store", "stores"),
+    formatLimit(entitlements.maxTeamMembers, "team member", "team members"),
+    formatLimit(entitlements.maxSkus, "product (SKU)", "products (SKUs)"),
+    monthlySales === null ? "Unlimited sales per month" :
+      typeof monthlySales === "number" && monthlySales >= 0
+        ? `Up to ${monthlySales.toLocaleString("en-US")} sales per month` : null,
+    formatLimit(entitlements.maxDevices, "device", "devices"),
+    reports && reports !== "none" ? `${reports.charAt(0).toUpperCase()}${reports.slice(1)} reporting` : null,
     entitlements.inventoryReplenishmentEnabled ? "Inventory alerts" : null,
     entitlements.stockMovementsEnabled ? "Stock movement history" : null,
     entitlements.expensesEnabled ? "Expense tracking" : null,
     entitlements.customInvoiceEnabled ? "Custom invoices" : null,
-  ].filter(Boolean) as string[];
-
-  return [...highlights, ...optionalHighlights].slice(0, 6);
+  ].filter((highlight): highlight is string => Boolean(highlight));
 };
 
 const normalizePlan = (plan: ApiPlan): DisplayPlan => {
@@ -215,7 +140,6 @@ export default function PricingSection() {
   }, []);
 
   const displayedPlans = useMemo(() => {
-    if (plans.length === 0) return defaultPlans;
 
     const sorted = [...plans].sort((a, b) => {
       const priceA = a.priceValue ?? Number.POSITIVE_INFINITY;
@@ -258,7 +182,10 @@ export default function PricingSection() {
         </div>
       </div>
 
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
+      {!isLoading && !error && displayedPlans.length === 0 && (
+        <p className="text-sm text-slate-500">No plans are available right now.</p>
+      )}
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {displayedPlans.map((plan) => {
           const isFeatured = Boolean(plan.featured);
 
@@ -289,7 +216,7 @@ export default function PricingSection() {
 
               <div className="space-y-2">
              
-                <h3 className="text-xl font-semibold text-foreground">{plan.label}</h3>
+                <h3 className={`text-xl font-semibold text-foreground ${isFeatured ? "pr-32" : ""}`}>{plan.label}</h3>
                 <p className="min-h-[56px] text-sm leading-6 text-slate-600">
                   {plan.description}
                 </p>
@@ -310,15 +237,10 @@ export default function PricingSection() {
                 <p className="mt-2 text-xs text-slate-500">Cancel anytime</p>
               )}
 
-              {/* tighter bullet spacing */}
-              <ul className="mt-4 space-y-1.5 text-sm text-slate-700">
+              <ul role="list" className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700 marker:text-[#1E2A5A]">
                 {plan.entitlementHighlights.map((highlight, idx) => (
-                  <li key={`${plan.id}-h-${idx}`} className="flex items-start gap-2">
-                    <span
-                      className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full"
-                      style={{ background: ACCENT }}
-                    />
-                    <span className="leading-5">{highlight}</span>
+                  <li key={`${plan.id}-h-${idx}`} className="pl-1 break-words">
+                    {highlight}
                   </li>
                 ))}
               </ul>

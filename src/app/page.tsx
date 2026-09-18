@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+import { pageMetadata, siteDescription } from "@/lib/seo";
+import Link from "next/link";
+import { solutions } from "@/lib/solutions";
 
 import PricingSection from "@/components/PricingSection";
 import HeroCard from "@/components/HeroCard";
@@ -11,43 +13,7 @@ import TrustedBanner from "@/components/TrustedBanner";
 
 const siteUrl = "https://keepur.app";
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://keepur.app"),
-
-  title: {
-    default: "Keepur | Sales, Inventory & Reports — Business, kept simple",
-    template: "%s | Keepur",
-  },
-
-  description:
-    "Keepur helps shops track sales, manage inventory, and view reports in one calm, reliable system built for real retailers in Bangladesh.",
-
-  openGraph: {
-    type: "website",
-    url: "https://keepur.app",
-    siteName: "Keepur",
-    title: "Keepur | Sales, Inventory & Reports — Business, kept simple",
-    description:
-      "Track sales, manage inventory, and view reports in one calm, reliable system built for real retailers in Bangladesh.",
-    images: [
-      {
-        url: "/images/keepur-og.png",
-        width: 1200,
-        height: 630,
-        alt: "Keepur – Sales, Inventory & Reports for Retailers",
-      },
-    ],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Keepur | Sales, Inventory & Reports — Business, kept simple",
-    description:
-      "Track sales, manage inventory, and view reports in one calm, reliable system built for real retailers in Bangladesh.",
-    images: ["/images/keepur-og.png"],
-  },
-};
-
+export const metadata = pageMetadata("POS & Shop Management Software in Bangladesh", siteDescription);
 
 function JsonLd() {
   const orgJsonLd = {
@@ -60,19 +26,7 @@ function JsonLd() {
       "@type": "Brand",
       name: "Keepur",
     },
-    foundingLocation: {
-      "@type": "Place",
-      name: "Bangladesh",
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "Bangladesh",
-    },
-    sameAs: [
-      "https://www.linkedin.com",
-      "https://www.facebook.com",
-      "https://www.youtube.com",
-    ],
+    areaServed: { "@type": "Country", name: "Bangladesh" },
   };
 
   const appJsonLd = {
@@ -84,13 +38,8 @@ function JsonLd() {
     url: siteUrl,
     description:
       "POS, inventory, and reporting software for retailers in Bangladesh.",
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "BDT",
-      price: "499",
-      availability: "https://schema.org/InStock",
-      url: `${siteUrl}#pricing`,
-    },
+    featureList: ["Point of sale", "Retail billing", "Inventory management", "Sales reports", "Staff access controls", "Multiple stores"],
+    publisher: { "@type": "Organization", name: "Keepur", url: siteUrl },
   };
 
   return (
@@ -127,6 +76,17 @@ export default function Home() {
             <SignalTimeline />
             <TestimonialsSection />
             <PricingSection />
+            <section aria-labelledby="solutions-heading" className="space-y-5">
+              <h2 id="solutions-heading" className="text-3xl font-semibold">Shop management solutions for Bangladesh</h2>
+              <p className="text-slate-600">Keepur brings checkout, product stock, staff access, and store reporting together. Choose a solution to explore how it supports your daily retail work.</p>
+              <div className="grid gap-4 sm:grid-cols-2">{solutions.map(solution => (
+                <Link key={solution.slug} href={`/${solution.slug}`} className="rounded-2xl border border-slate-200 bg-white p-5">
+                  <h3 className="font-semibold">{solution.heading}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{solution.summary}</p>
+                  <span className="mt-3 block text-sm font-semibold text-primary">Explore solution →</span>
+                </Link>
+              ))}</div>
+              <p lang="bn" className="text-sm leading-7 text-slate-600">বাংলাদেশের দোকানের জন্য পিওএস ও দোকান ম্যানেজমেন্ট সফটওয়্যার। Keepur দিয়ে বিক্রয়, বিলিং, পণ্যের স্টক এবং একাধিক দোকানের রিপোর্ট এক জায়গায় পরিচালনা করুন। সুবিধা ও সীমা আপনার নির্বাচিত প্ল্যান অনুযায়ী প্রযোজ্য।</p>
+            </section>
             <FaqSection />
             <ReadySection />
           </main>

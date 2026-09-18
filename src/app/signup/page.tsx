@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 const signupUrl = "https://app.keepur.app/signup";
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: true },
   title: "Sign up for Keepur",
   description:
     "Create a Keepur account to start running checkout, tracking inventory, and viewing real-time reports from any device.",
