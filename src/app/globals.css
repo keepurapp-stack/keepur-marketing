@@ -1,48 +1,273 @@
 @import "tailwindcss";
 
+/* Keepur editorial theme: warm paper, deep navy panels, periwinkle + marigold accents. */
 :root {
-  --background: #ffffff;
+  --background: #f6f4ee;
+  --surface: #efece4;
+  --card: #fffdf8;
+  --foreground: #0e1433;
+  --muted: #5a6078;
   --primary: #6e8cfb;
-  --foreground: #120495;
-  --accent: #6e8cfb;
-  --accent-soft: #e0e7ff;
-  --border-light: #d5d8e7;
+  --primary-soft: #b9c6ff;
+  --brand: #1e2a5a;
+  --brand-ink: #0e1433;
+  --ink-2: #172050;
+  --marigold: #ffc24b;
+  --violet: #8b5cf6;
+  --border-light: #e3dfd3;
 }
-html { scroll-behavior: smooth; }
 
 @theme inline {
   --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-brand: var(--brand);
+  --color-ink: var(--brand-ink);
+  --color-ink-2: var(--ink-2);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-marigold: var(--marigold);
+  --color-violet: var(--violet);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist);
+  --color-line: var(--border-light);
+  --font-sans: var(--kp-body), var(--kp-bangla), system-ui, sans-serif;
+  --font-display: var(--kp-display), var(--kp-bangla-display), system-ui, sans-serif;
+  --font-serif: var(--kp-serif), var(--kp-bangla-display), Georgia, serif;
+  --font-mono: var(--kp-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist), system-ui, sans-serif;
+  font-family: var(--kp-body), var(--kp-bangla), system-ui, sans-serif;
   margin: 0;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
-* {
-  box-sizing: border-box;
+h1, h2, h3 {
+  font-family: var(--kp-display), var(--kp-bangla-display), system-ui, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+/* Bengali script: Bangla-first stacks and more vertical room. */
+html[lang="bn"] body {
+  font-family: var(--kp-bangla), var(--kp-body), system-ui, sans-serif;
+  line-height: 1.7;
+}
+html[lang="bn"] :is(h1, h2, h3) {
+  font-family: var(--kp-bangla-display), var(--kp-display), system-ui, sans-serif;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+html[lang="bn"] .font-serif {
+  font-family: var(--kp-bangla-display), serif;
+  font-style: normal;
+}
+
+section[id] {
+  scroll-margin-top: 104px;
 }
 
 ::selection {
-  background: rgba(110, 140, 251, 0.4);
+  background: rgba(110, 140, 251, 0.3);
 }
 
-.glass-card {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(13, 59, 115, 0.08);
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
-  backdrop-filter: blur(26px);
+/* Accent word inside a headline: editorial italic serif. */
+.accent-serif {
+  font-family: var(--kp-serif), var(--kp-bangla-display), Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+html[lang="bn"] .accent-serif {
+  font-family: var(--kp-bangla-display), serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.mono-label {
+  font-family: var(--kp-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Faint ruled paper, like a shop khata. */
+.bg-ruled {
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 31px, rgba(14, 20, 51, 0.06) 31px, rgba(14, 20, 51, 0.06) 32px);
+}
+.bg-dots {
+  background-image: radial-gradient(rgba(14, 20, 51, 0.12) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(14, 20, 51, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 20, 51, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+.panel-glow {
+  background:
+    radial-gradient(60% 80% at 15% 0%, rgba(110, 140, 251, 0.28), transparent 60%),
+    radial-gradient(50% 70% at 100% 100%, rgba(255, 194, 75, 0.12), transparent 60%),
+    var(--brand-ink);
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, #6e8cfb 0%, #8b5cf6 60%, #6e8cfb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: var(--brand-ink);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 10px 24px -12px rgba(14, 20, 51, 0.6);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  background: var(--ink-2);
+}
+
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: var(--marigold);
+  color: var(--brand-ink);
+  font-weight: 700;
+  box-shadow: 0 10px 24px -12px rgba(255, 194, 75, 0.8), inset 0 -2px 0 rgba(14, 20, 51, 0.12);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.btn-accent:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid #d6d1c2;
+  background: transparent;
+  color: var(--foreground);
+  font-weight: 600;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.btn-secondary:hover {
+  border-color: var(--foreground);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--kp-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.eyebrow::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  background: var(--primary);
+}
+html[lang="bn"] .eyebrow,
+html[lang="bn"] .mono-label {
+  font-family: var(--kp-bangla), sans-serif;
+  letter-spacing: 0.02em;
+  font-size: 0.82rem;
+  text-transform: none;
+}
+
+.card {
+  border-radius: 1.5rem;
+  border: 1px solid var(--border-light);
+  background: var(--card);
+  box-shadow: 0 1px 0 rgba(14, 20, 51, 0.03), 0 18px 40px -30px rgba(14, 20, 51, 0.35);
 }
 
 .stamp {
-  font-size: 0.75rem;
-  letter-spacing: 0.45em;
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid currentColor;
+  border-radius: 6px;
+  padding: 0.15rem 0.5rem;
+  font-family: var(--kp-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  box-shadow: inset 0 0 0 2px var(--card), inset 0 0 0 3px currentColor;
 }
+
+/* Receipt edge (zig-zag bottom). */
+.receipt-edge {
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 18px 100%;
+  mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 18px 100%;
+  padding-bottom: 12px;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0) rotate(var(--tilt, 0deg)); }
+  50% { transform: translateY(-8px) rotate(var(--tilt, 0deg)); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes print-in {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+.animate-fade-up { animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-float { animation: float-y 6s ease-in-out infinite; }
+.animate-print { animation: print-in 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
+
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+.marquee { mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent); }
+.marquee-track { display: flex; width: max-content; animation: marquee var(--marquee-duration, 40s) linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-fade-up, .animate-float, .animate-print, .marquee-track { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .marquee-track { flex-wrap: wrap; width: auto; justify-content: center; }
+}
+
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .faq-icon { transform: rotate(135deg); }

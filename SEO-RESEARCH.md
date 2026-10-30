@@ -13,7 +13,7 @@ Research date: 18 September 2026. This is qualitative search-intent research fro
 | Compare cost | POS software price in Bangladesh, retail billing software price, POS subscription BDT | /#pricing |
 | Product discovery | web-based POS and shop management software Bangladesh | / |
 
-English phrases reflect repeated themes in current local vendor results. Bengali wording is a local-language candidate; volume has not been validated. The homepage includes a short visible Bengali explanation, not a separate localized site or hreflang claim. Prioritize retail software searches rather than generic POS machine/payment terminal searches. Do not target restaurant, pharmacy compliance, NBR/VAT certification, offline functionality, hardware packages, or AI product capabilities without confirming that the product supports them.
+English phrases reflect repeated themes in current local vendor results. Bengali wording is a local-language candidate; volume has not been validated. Since 2026-10-30 the site has a full Bangla version under `/bn` (home, contact, four solution pages) with `en`/`bn`/`x-default` hreflang alternates, `bn_BD` Open Graph locale, Bangla FAQ schema, and both languages in sitemap.xml. Prioritize retail software searches rather than generic POS machine/payment terminal searches. Do not target restaurant, pharmacy compliance, NBR/VAT certification, offline functionality, hardware packages, or AI product capabilities without confirming that the product supports them.
 
 ## Research sources
 

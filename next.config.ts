@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Two root layouts ((en) and (bn)) need a global 404: src/app/global-not-found.tsx.
+    globalNotFound: true,
+  },
   images: {
     remotePatterns: [
       {
